@@ -5,10 +5,7 @@ import CartPage from "../pages/CartPage";
 import ErrorPage from "../pages/ErrorPage";
 import HomePage from "../pages/HomePage";
 import ProductDetailsPage from "../pages/ProductDetailsPage";
-import ProductsPage, {
-  action as productAction,
-  loader as productLoader,
-} from "../pages/ProductsPage";
+import ProductsPage from "../pages/ProductsPage";
 
 const router = createBrowserRouter([
   {
@@ -28,8 +25,6 @@ const router = createBrowserRouter([
       {
         path: "/products",
         element: <ProductsPage />,
-        loader: productLoader,
-        action: productAction,
       },
       {
         path: "/products/:productId",
