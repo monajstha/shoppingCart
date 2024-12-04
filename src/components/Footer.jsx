@@ -2,8 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer>
-      {" "}
+    <footer className="flex justify-center">
       <p>&#169; 2024 Manoj Shrestha </p>
     </footer>
   );

@@ -5,10 +5,12 @@ import { useAppContext } from "../context/context";
 
 export default function ProductDetailsPage() {
   const { productId } = useParams();
-  const { state, method } = useAppContext();
+  const { state } = useAppContext();
 
-  console.log(state.products);
   const selectedProduct = state.products.find((item) => item.id === +productId);
-  console.log(productId, { selectedProduct });
-  return <ProductDetailsCard productDetails={selectedProduct} />;
+  return (
+    <div className="h-dvh flex justify-center px-4">
+      <ProductDetailsCard productDetails={selectedProduct} />
+    </div>
+  );
 }

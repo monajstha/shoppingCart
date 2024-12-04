@@ -20,10 +20,11 @@ export const ContextProvider = ({ children }) => {
     const updatedCart = allCartItems.reduce((acc, curr) => {
       if (curr.id === product.id) {
         const totalQuantity = curr.quantity + product.quantity;
+        const totalPrice = totalQuantity * curr.price;
         acc.push({
           ...curr,
           quantity: totalQuantity,
-          price: totalQuantity * curr.price,
+          totalPrice,
         });
       } else {
         acc.push(curr);
@@ -33,7 +34,10 @@ export const ContextProvider = ({ children }) => {
     // Check if product exists in the cart and add it if it doesn't
     const isProductInCart = allCartItems.some((item) => item.id === product.id);
     if (!isProductInCart) {
-      updatedCart.push({ ...product });
+      updatedCart.push({
+        ...product,
+        totalPrice: product.quantity * product.price,
+      });
     }
     setState((prevState) => ({
       ...prevState,
@@ -41,8 +45,17 @@ export const ContextProvider = ({ children }) => {
     }));
   };
 
+  const removeFromCart = (filteredItems) => {
+    setState((prevState) => ({
+      ...prevState,
+      cart: filteredItems,
+    }));
+  };
+
   return (
-    <Context.Provider value={{ state, method: { updateProducts, addToCart } }}>
+    <Context.Provider
+      value={{ state, method: { updateProducts, addToCart, removeFromCart } }}
+    >
       {children}
     </Context.Provider>
   );

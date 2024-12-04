@@ -11,10 +11,10 @@ export default function ProductCard({ productDetails }) {
 
   return (
     <div
-      className="flex flex-col w-52 h-56  bg-slate-500 m-3 justify-center items-start cursor-pointer"
+      className="flex flex-col w-56 h-60  bg-slate-500 m-3 justify-center items-start cursor-pointer"
       onClick={handleProductClick}
     >
-      <img className="w-52 h-36" src={image} alt={title} />
+      <img className="w-56 h-36" src={image} alt={title} />
       <div className="p-2">
         <p className="line-clamp-2">{title}</p>
         <p>${price}</p>

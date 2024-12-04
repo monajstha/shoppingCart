@@ -22,15 +22,15 @@ export default function ProductsPage() {
     return () => {};
   }, []);
 
-  return (
-    <div className="flex flex-wrap">
-      {state.products.length === 0
-        ? "Loading..."
-        : state.products.map((item) => (
-            <div key={item.id}>
-              <ProductCard productDetails={item} />
-            </div>
-          ))}
+  return state.products.length === 0 ? (
+    <div className="h-dvh flex justify-center items-center">Loading...</div>
+  ) : (
+    <div className="flex flex-wrap  px-4">
+      {state.products.map((item) => (
+        <div key={item.id}>
+          <ProductCard productDetails={item} />
+        </div>
+      ))}
     </div>
   );
 }

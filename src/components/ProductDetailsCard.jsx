@@ -27,8 +27,8 @@ export default function ProductDetailsCard({ productDetails }) {
   console.log(state.cart);
 
   return (
-    <div className="flex w-[70%]  bg-slate-500 m-3 items-start p-2">
-      <img className="w-[40%] h-[100%]" src={image} alt={title} />
+    <div className="flex w-[100%] h-[60%]  bg-slate-500 m-3 items-start p-2">
+      <img className="w-[40%] h-full" src={image} alt={title} />
       <div className="pl-4">
         <p className="text-xl font-medium">{title}</p>
         <p className="text-sm mt-2">{description}</p>
