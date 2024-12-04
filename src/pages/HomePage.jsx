@@ -6,7 +6,8 @@ export default function HomePage() {
   console.log({ state });
   return (
     <div className="h-dvh flex flex-col justify-center items-center">
-      Shop everything you need in one place!
+      <p className="text-2xl"> Shop everything you need in one place!</p>
+      <p>Browse through the products section and add items to the cart.</p>
     </div>
   );
 }
