@@ -8,28 +8,9 @@ export default function Header() {
 
   const isActive = (path) => location.pathname === path;
 
-  // Tracks the count of recently added items
-  const [recentlyAddedCount, setRecentlyAddedCount] = useState(0);
-  // Stores the cart size at the time of visiting the cart
-  const [lastCartSize, setLastCartSize] = useState(state.cart.length);
-
-  // Reset recentlyAddedCount when on the cart page
-  useEffect(() => {
-    if (isActive("/cart")) {
-      setRecentlyAddedCount(0); // Clear notification
-      setLastCartSize(state.cart.length); // Update reference to cart size
-    }
-  }, [location.pathname, state.cart.length]);
-
-  // Update recentlyAddedCount when cart changes and not on the cart page
-  useEffect(() => {
-    if (!isActive("/cart")) {
-      const newItems = state.cart.length - lastCartSize;
-      if (newItems > 0) {
-        setRecentlyAddedCount(newItems);
-      }
-    }
-  }, [state.cart.length]);
+  const totalQuantity = state.cart.reduce((acc, curr) => {
+    return acc + curr.quantity;
+  }, 0);
 
   return (
     <header className="flex items-center justify-between w-[100%] p-4 px-8">
@@ -64,11 +45,9 @@ export default function Header() {
           >
             <div className="flex relative">
               <p>Cart</p>
-              {!!recentlyAddedCount && (
+              {!!totalQuantity && (
                 <div className="flex justify-center items-center absolute top-[-5px] right-[-20px] h-[20px] w-[20px]  bg-red-600 rounded-[10px] ">
-                  <p className=" text-white font-medium">
-                    {recentlyAddedCount}
-                  </p>
+                  <p className=" text-white font-medium">{totalQuantity}</p>
                 </div>
               )}
             </div>

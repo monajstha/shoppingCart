@@ -45,6 +45,21 @@ export const ContextProvider = ({ children }) => {
     }));
   };
 
+  const updateCart = (productId, updatedValue) => {
+    const allCartItems = [...state.cart];
+    const allItemIds = allCartItems.map((item) => item.id);
+    const itemIndex = allItemIds.indexOf(productId);
+    let item = {
+      ...allCartItems[itemIndex],
+      ...updatedValue,
+    };
+    allCartItems.splice(itemIndex, 1, item);
+    setState((prevState) => ({
+      ...prevState,
+      cart: allCartItems,
+    }));
+  };
+
   const removeFromCart = (filteredItems) => {
     setState((prevState) => ({
       ...prevState,
@@ -54,7 +69,10 @@ export const ContextProvider = ({ children }) => {
 
   return (
     <Context.Provider
-      value={{ state, method: { updateProducts, addToCart, removeFromCart } }}
+      value={{
+        state,
+        method: { updateProducts, addToCart, updateCart, removeFromCart },
+      }}
     >
       {children}
     </Context.Provider>

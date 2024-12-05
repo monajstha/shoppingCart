@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { redirect, useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useAppContext } from "../context/context";
 
 export default function ProductDetailsCard({ productDetails }) {
@@ -18,6 +19,8 @@ export default function ProductDetailsCard({ productDetails }) {
   };
 
   const handleAddToCart = () => {
+    toast.success("Item has been added to the cart!");
+
     method.addToCart({
       ...productDetails,
       quantity,

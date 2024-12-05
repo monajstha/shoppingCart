@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CartCard from "../components/CartCard";
+import OrderSummaryCard from "../components/OrderSummaryCard";
 import { useAppContext } from "../context/context";
 
 export default function CartPage() {
@@ -13,17 +14,20 @@ export default function CartPage() {
     method.removeFromCart(filtered);
   };
 
-  console.log(state.cart);
+  console.log("Cart Page's Cart:", state.cart);
   return (
     <div className="h-dvh flex flex-col px-8">
       {!!cartItems.length ? (
-        cartItems.map((item) => (
-          <CartCard
-            key={item.id}
-            productDetails={item}
-            onDelete={() => handleDeleteCartItem(item.id)}
-          />
-        ))
+        <>
+          {cartItems.map((item) => (
+            <CartCard
+              key={item.id}
+              productDetails={item}
+              onDelete={() => handleDeleteCartItem(item.id)}
+            />
+          ))}
+          <OrderSummaryCard />
+        </>
       ) : (
         <div className="h-dvh flex flex-col justify-center items-center">
           Browse through products and add items to the cart :)

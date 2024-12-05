@@ -2,19 +2,32 @@ import React, { useEffect, useState } from "react";
 import { useAppContext } from "../context/context";
 
 export default function CartCard({ productDetails, onDelete }) {
+  const { method } = useAppContext();
   const { id, title, image, price, quantity, totalPrice, rating } =
     productDetails;
 
   const [itemQuantity, setItemQuantity] = useState(quantity);
+  const [itemTotalPrice, setItemTotalPrice] = useState(totalPrice);
 
   const handleIncreaseQuantity = () => {
     if (itemQuantity >= rating.count) return;
     setItemQuantity(itemQuantity + 1);
+    setItemTotalPrice((itemQuantity + 1) * price);
+    method.updateCart(id, {
+      quantity: itemQuantity + 1,
+      totalPrice: (itemQuantity + 1) * price,
+    });
   };
 
   const handleDecreaseQuantity = () => {
     if (itemQuantity <= 1) return;
     setItemQuantity(itemQuantity - 1);
+    setItemTotalPrice((itemQuantity - 1) * price);
+
+    method.updateCart(id, {
+      quantity: itemQuantity - 1,
+      totalPrice: (itemQuantity - 1) * price,
+    });
   };
 
   return (
@@ -25,7 +38,7 @@ export default function CartCard({ productDetails, onDelete }) {
         <p className="font-medium">Quantity: {itemQuantity}</p>
         <p>Product's Price: ${price}</p>
         <p className="font-bold text-lg">
-          Total Price: ${itemQuantity * price}
+          Total Price: ${itemTotalPrice.toFixed(2)}
         </p>
       </div>
       <div className="flex justify-between w-[40%]">
