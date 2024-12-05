@@ -18,30 +18,30 @@ export default function OrderSummaryCard() {
   };
 
   return (
-    <div>
-      <div className="flex flex-col items-end ">
-        <div className="flex w-[40%] justify-start bg-slate-500">
+    <div className="flex flex-col items-end">
+      <div className="w-[40%] ">
+        <div className="flex justify-start">
           <p className=" text-xl font-semibold">Order Summary</p>
         </div>
-        <div className="flex  w-[40%] justify-between my-2">
+        <div className="flex  justify-between my-2">
           <p>Subtotal ({totalQuantity} Items)</p>
           <p>${subTotal.toFixed(2)}</p>
         </div>
-        <div className="flex w-[40%] justify-between my-2">
+        <div className="flex justify-between my-2">
           <p>Shipping Fee</p>
           <p>$0</p>
         </div>
-        <div className="flex w-[40%] justify-between my-2">
+        <div className="flex justify-between my-2">
           <p>Total Fee</p>
           <p>${subTotal.toFixed(2)}</p>
         </div>
-        <button
-          className=" bg-orange-600 text-white px-4 py-1 rounded font-medium"
-          onClick={handleCheckout}
-        >
-          Checkout
-        </button>
       </div>
+      <button
+        className="bg-orange-600 text-white px-4 py-1 rounded font-medium"
+        onClick={handleCheckout}
+      >
+        Checkout
+      </button>
     </div>
   );
 }

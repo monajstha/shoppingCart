@@ -30,7 +30,7 @@ export default function ProductDetailsCard({ productDetails }) {
   console.log(state.cart);
 
   return (
-    <div className="flex w-[100%] max-h-[60%]  bg-slate-500 m-3 items-start p-2">
+    <div className="flex w-[100%] max-h-[70%]  bg-slate-500 m-3 items-start p-2">
       <img className="w-[40%] h-full" src={image} alt={title} />
       <div className="pl-4">
         <p className="text-xl font-medium">{title}</p>
