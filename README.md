@@ -41,3 +41,7 @@ The project includes tests to ensure the functionality of key components. Run th
 
 ```bash
 npm test
+```
+## Credits
+**API** for this application is used from FakeStoreAPI. Check out the API here: [FakeStoreAPI](https://fakestoreapi.com/)
+
