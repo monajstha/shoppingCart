@@ -11,13 +11,22 @@ export default function ProductCard({ productDetails }) {
 
   return (
     <div
-      className="flex flex-col w-56 h-60  bg-slate-500 m-3 justify-center items-start cursor-pointer"
+      className="flex flex-col w-56 h-72  bg-white m-3 justify-center items-start cursor-pointer shadow-black shadow-lg hover:shadow-xl"
+      aria-label={`View details for ${title}`}
       onClick={handleProductClick}
+      role="button"
     >
-      <img className="w-56 h-36" src={image} alt={title} />
-      <div className="p-2">
-        <p className="line-clamp-2">{title}</p>
-        <p>${price}</p>
+      <div className="flex justify-center items-center w-full h-48 p-4 ">
+        <img
+          className="w-full h-40 object-contain"
+          src={image}
+          alt={title}
+          onLoad={() => <>Loading..</>}
+        />
+      </div>
+      <div className="p-2 bg-slate-700 w-[100%] text-lg h-full">
+        <p className="line-clamp-2 text-lg">{title}</p>
+        <p className="">${price}</p>
       </div>
     </div>
   );
