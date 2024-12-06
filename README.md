@@ -3,7 +3,7 @@
 A simple shopping cart application that displays a list of products and allows users to add products to the cart. The app provides a seamless user experience with features such as product navigation and cart notifications.
 
 ## Live Demo
-Check out the live version of the application here: [Shopping Cart App](https://monajstha-cart.netlify.app/)
+Check out the live version of the application here: [Shopping Cart App](https://monajstha-shoppingcart.netlify.app/)
 
 ## Features
 - Display a list of products with details like title, image, and price.
